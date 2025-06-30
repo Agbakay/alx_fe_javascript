@@ -1,69 +1,200 @@
-* {
-  padding: 0;
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   margin: 0;
-  font-family: "lato", sans-serif;
-  box-sizing: border-box;
+  padding: 1rem;
 }
 
-#box-container {
+/* --- Main Container --- */
+.container {
+  width: 100%;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem; /* p-6 */
+}
+
+.container > * + * {
+  margin-top: 1.5rem;
+}
+
+/* --- Header --- */
+header {
+  text-align: center;
+}
+header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+header p {
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* --- Quote Display --- */
+#quoteDisplay {
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  min-height: 150px;
   display: flex;
-  height: 100vh;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 20px;
+  transition: all 0.3s ease-in-out;
 }
-
-#main-container {
-  width: 550px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 15px;
-  background: #ffcc00;
-  padding: 40px 50px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgb(0, 0, 0, 0.5);
+#quoteDisplay p:first-child {
+  font-size: 1.125rem;
+  font-style: italic;
 }
-
-#main-container h1 {
-  font-size: 1.5rem;
-  background: #000;
-  padding: 15px;
-  border-radius: 5px;
-  margin: 20px auto;
-  color: #fff;
-}
-
-div #quoteDisplay {
-  font-size: 1.2rem;
-}
-
-.category {
-  color: blue;
+#quoteDisplay p:last-child {
+  margin-top: 1rem;
   font-weight: 600;
-  font-size: 1.2rem;
+  color: #4b5563;
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-#main-container .btn {
-  padding: 15px 15px;
-  color: #fff;
-  background: purple;
-  border-radius: 10px;
+/* --- Controls & Buttons --- */
+.controls,
+.import-export-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+button,
+.button-label {
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  transform-origin: center;
+}
+button:hover,
+.button-label:hover {
+  transform: scale(1.05);
+}
+
+#newQuote {
+  background-color: #3b82f6;
+}
+#newQuote:hover {
+  background-color: #2563eb;
+}
+
+#addQuoteBtn {
+  background-color: #22c55e;
+  width: 100%;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+#addQuoteBtn:hover {
+  background-color: #16a34a;
+}
+
+#exportQuotes {
+  background-color: #8b5cf6;
+}
+#exportQuotes:hover {
+  background-color: #7c3aed;
+}
+
+.import-label {
+  background-color: #f59e0b;
+}
+.import-label:hover {
+  background-color: #d97706;
+}
+
+/* --- Forms --- */
+.form-section,
+.import-export-section {
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+.form-section h2,
+.import-export-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.form-fields > * + * {
+  margin-top: 1rem;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
   font-size: 1rem;
-  font-size: 600;
-  width: 35%;
+  box-sizing: border-box;
+}
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
-#main-container .btn:hover {
-  background: rgb(73, 19, 73);
+input[type="file"].hidden-input {
+  display: none;
 }
 
-input {
-  height: 20px;
-  padding: 20px;
-  margin-top: 10px;
-  border-radius: 5px;
+/* --- Server Notification --- */
+#serverNotification {
+  background-color: #dbeafe;
+  border-left: 4px solid #3b82f6;
+  color: #1e40af;
+  padding: 1rem;
+  border-radius: 0.375rem;
+}
+#serverNotification.hidden {
+  display: none;
+}
+#serverNotification p:first-child {
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+  header h1 {
+    font-size: 2.25rem;
+  }
+  #quoteDisplay p:first-child {
+    font-size: 1.25rem;
+  }
 }

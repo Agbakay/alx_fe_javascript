@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box-container">
+      <div id="main-container">
+        <h1>Dynamic Quote Generator</h1>
+        <div id="quoteDisplay">hey man</div>
+        <div class="category">Greetings</div>
+
+        <button id="newQuote" class="btn">Show New Quote</button>
+
+        <div>
+          <input
+            id="newQuoteText"
+            type="text"
+            placeholder="Enter a new quote"
+          />
+          <br />
+          <input
+            id="newQuoteCategory"
+            type="text"
+            placeholder="Enter quote category"
+          /><br /><br />
+          <button onclick="addQuote()">Add Quote</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
